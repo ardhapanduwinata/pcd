@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Praktikum2_TI4B_1641720114_Ardhanar
 {
-    public partial class frmInverse : Form
+    public partial class Form3 : Form
     {
-        public frmInverse()
+        public Form3()
         {
             InitializeComponent();
         }

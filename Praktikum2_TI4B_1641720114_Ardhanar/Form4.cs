@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Praktikum2_TI4B_1641720114_Ardhanar
 {
-    public partial class frmLogContrast : Form
+    public partial class Form4 : Form
     {
-        public frmLogContrast()
+        public Form4()
         {
             InitializeComponent();
         }

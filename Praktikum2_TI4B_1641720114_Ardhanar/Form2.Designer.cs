@@ -1,6 +1,6 @@
 ﻿namespace Praktikum2_TI4B_1641720114_Ardhanar
 {
-    partial class frmBrightness
+    partial class Form2
     {
         /// <summary>
         /// Required designer variable.

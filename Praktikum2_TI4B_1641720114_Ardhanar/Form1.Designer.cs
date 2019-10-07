@@ -45,11 +45,14 @@
             this.logContrastToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gammaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rGBToGrayscaleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.depthToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.fileLocation = new System.Windows.Forms.ToolStripStatusLabel();
             this.fileSize = new System.Windows.Forms.ToolStripStatusLabel();
             this.ProgressBar1 = new System.Windows.Forms.ProgressBar();
-            this.depthToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.averageToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.nearestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.errorDiffusionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pbInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbOutput)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -129,7 +132,10 @@
             this.logContrastToolStripMenuItem,
             this.gammaToolStripMenuItem,
             this.rGBToGrayscaleToolStripMenuItem,
-            this.depthToolStripMenuItem});
+            this.depthToolStripMenuItem,
+            this.averageToolStripMenuItem1,
+            this.nearestToolStripMenuItem,
+            this.errorDiffusionToolStripMenuItem});
             this.colorsToolStripMenuItem.Name = "colorsToolStripMenuItem";
             this.colorsToolStripMenuItem.Size = new System.Drawing.Size(75, 29);
             this.colorsToolStripMenuItem.Text = "Colors";
@@ -194,7 +200,15 @@
             // 
             this.rGBToGrayscaleToolStripMenuItem.Name = "rGBToGrayscaleToolStripMenuItem";
             this.rGBToGrayscaleToolStripMenuItem.Size = new System.Drawing.Size(262, 30);
-            this.rGBToGrayscaleToolStripMenuItem.Text = "RGB to Grayscale";
+            this.rGBToGrayscaleToolStripMenuItem.Text = "Grayscale Operation";
+            this.rGBToGrayscaleToolStripMenuItem.Click += new System.EventHandler(this.rGBToGrayscaleToolStripMenuItem_Click);
+            // 
+            // depthToolStripMenuItem
+            // 
+            this.depthToolStripMenuItem.Name = "depthToolStripMenuItem";
+            this.depthToolStripMenuItem.Size = new System.Drawing.Size(262, 30);
+            this.depthToolStripMenuItem.Text = "Bit Depth";
+            this.depthToolStripMenuItem.Click += new System.EventHandler(this.depthToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 
@@ -227,12 +241,25 @@
             this.ProgressBar1.Size = new System.Drawing.Size(269, 23);
             this.ProgressBar1.TabIndex = 4;
             // 
-            // depthToolStripMenuItem
+            // averageToolStripMenuItem1
             // 
-            this.depthToolStripMenuItem.Name = "depthToolStripMenuItem";
-            this.depthToolStripMenuItem.Size = new System.Drawing.Size(262, 30);
-            this.depthToolStripMenuItem.Text = "Depth";
-            this.depthToolStripMenuItem.Click += new System.EventHandler(this.depthToolStripMenuItem_Click);
+            this.averageToolStripMenuItem1.Name = "averageToolStripMenuItem1";
+            this.averageToolStripMenuItem1.Size = new System.Drawing.Size(262, 30);
+            this.averageToolStripMenuItem1.Text = "Average Denoising";
+            this.averageToolStripMenuItem1.Click += new System.EventHandler(this.averageToolStripMenuItem1_Click);
+            // 
+            // nearestToolStripMenuItem
+            // 
+            this.nearestToolStripMenuItem.Name = "nearestToolStripMenuItem";
+            this.nearestToolStripMenuItem.Size = new System.Drawing.Size(262, 30);
+            this.nearestToolStripMenuItem.Text = "Nearest 8 Color";
+            this.nearestToolStripMenuItem.Click += new System.EventHandler(this.nearestToolStripMenuItem_Click);
+            // 
+            // errorDiffusionToolStripMenuItem
+            // 
+            this.errorDiffusionToolStripMenuItem.Name = "errorDiffusionToolStripMenuItem";
+            this.errorDiffusionToolStripMenuItem.Size = new System.Drawing.Size(262, 30);
+            this.errorDiffusionToolStripMenuItem.Text = "Error Diffusion";
             // 
             // Form1
             // 
@@ -282,6 +309,9 @@
         private System.Windows.Forms.ToolStripMenuItem gammaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rGBToGrayscaleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem depthToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem averageToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem nearestToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem errorDiffusionToolStripMenuItem;
     }
 }
 

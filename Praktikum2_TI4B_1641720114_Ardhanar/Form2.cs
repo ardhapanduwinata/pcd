@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Praktikum2_TI4B_1641720114_Ardhanar
 {
-    public partial class frmBrightness : Form
+    public partial class Form2 : Form
     {
-        public frmBrightness()
+        public Form2()
         {
             InitializeComponent();
         }

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Praktikum2_TI4B_1641720114_Ardhanar
 {
-    public partial class frmDepth : Form
+    public partial class Form6 : Form
     {
-        public frmDepth()
+        public Form6()
         {
             InitializeComponent();
         }
