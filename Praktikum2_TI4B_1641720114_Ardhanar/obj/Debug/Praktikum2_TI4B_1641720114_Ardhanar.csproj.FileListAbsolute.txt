@@ -1,0 +1,15 @@
+D:\7. TI-4B Semester 7\Pengolahan Citra Digital\Project\Praktikum2_TI4B_1641720114_Ardhanar\Praktikum2_TI4B_1641720114_Ardhanar\obj\Debug\Praktikum2_TI4B_1641720114_Ardhanar.csprojAssemblyReference.cache
+D:\7. TI-4B Semester 7\Pengolahan Citra Digital\Project\Praktikum2_TI4B_1641720114_Ardhanar\Praktikum2_TI4B_1641720114_Ardhanar\obj\Debug\Praktikum2_TI4B_1641720114_Ardhanar.Form1.resources
+D:\7. TI-4B Semester 7\Pengolahan Citra Digital\Project\Praktikum2_TI4B_1641720114_Ardhanar\Praktikum2_TI4B_1641720114_Ardhanar\obj\Debug\Praktikum2_TI4B_1641720114_Ardhanar.frmBrightness.resources
+D:\7. TI-4B Semester 7\Pengolahan Citra Digital\Project\Praktikum2_TI4B_1641720114_Ardhanar\Praktikum2_TI4B_1641720114_Ardhanar\obj\Debug\Praktikum2_TI4B_1641720114_Ardhanar.Properties.Resources.resources
+D:\7. TI-4B Semester 7\Pengolahan Citra Digital\Project\Praktikum2_TI4B_1641720114_Ardhanar\Praktikum2_TI4B_1641720114_Ardhanar\obj\Debug\Praktikum2_TI4B_1641720114_Ardhanar.csproj.GenerateResource.cache
+D:\7. TI-4B Semester 7\Pengolahan Citra Digital\Project\Praktikum2_TI4B_1641720114_Ardhanar\Praktikum2_TI4B_1641720114_Ardhanar\obj\Debug\Praktikum2_TI4B_1641720114_Ardhanar.csproj.CoreCompileInputs.cache
+D:\7. TI-4B Semester 7\Pengolahan Citra Digital\Project\Praktikum2_TI4B_1641720114_Ardhanar\Praktikum2_TI4B_1641720114_Ardhanar\bin\Debug\Praktikum2_TI4B_1641720114_Ardhanar.exe.config
+D:\7. TI-4B Semester 7\Pengolahan Citra Digital\Project\Praktikum2_TI4B_1641720114_Ardhanar\Praktikum2_TI4B_1641720114_Ardhanar\bin\Debug\Praktikum2_TI4B_1641720114_Ardhanar.exe
+D:\7. TI-4B Semester 7\Pengolahan Citra Digital\Project\Praktikum2_TI4B_1641720114_Ardhanar\Praktikum2_TI4B_1641720114_Ardhanar\bin\Debug\Praktikum2_TI4B_1641720114_Ardhanar.pdb
+D:\7. TI-4B Semester 7\Pengolahan Citra Digital\Project\Praktikum2_TI4B_1641720114_Ardhanar\Praktikum2_TI4B_1641720114_Ardhanar\obj\Debug\Praktikum2_TI4B_1641720114_Ardhanar.exe
+D:\7. TI-4B Semester 7\Pengolahan Citra Digital\Project\Praktikum2_TI4B_1641720114_Ardhanar\Praktikum2_TI4B_1641720114_Ardhanar\obj\Debug\Praktikum2_TI4B_1641720114_Ardhanar.pdb
+D:\7. TI-4B Semester 7\Pengolahan Citra Digital\Project\Praktikum2_TI4B_1641720114_Ardhanar\Praktikum2_TI4B_1641720114_Ardhanar\obj\Debug\Praktikum2_TI4B_1641720114_Ardhanar.frmInverse.resources
+D:\7. TI-4B Semester 7\Pengolahan Citra Digital\Project\Praktikum2_TI4B_1641720114_Ardhanar\Praktikum2_TI4B_1641720114_Ardhanar\obj\Debug\Praktikum2_TI4B_1641720114_Ardhanar.frmLogContrast.resources
+D:\7. TI-4B Semester 7\Pengolahan Citra Digital\Project\Praktikum2_TI4B_1641720114_Ardhanar\Praktikum2_TI4B_1641720114_Ardhanar\obj\Debug\Praktikum2_TI4B_1641720114_Ardhanar.frmGamma.resources
+D:\7. TI-4B Semester 7\Pengolahan Citra Digital\Project\Praktikum2_TI4B_1641720114_Ardhanar\Praktikum2_TI4B_1641720114_Ardhanar\obj\Debug\Praktikum2_TI4B_1641720114_Ardhanar.frmDepth.resources
