@@ -1,6 +1,6 @@
 ﻿namespace Praktikum2_TI4B_1641720114_Ardhanar
 {
-    partial class frmDepth
+    partial class Form6
     {
         /// <summary>
         /// Required designer variable.
@@ -57,12 +57,12 @@
             // 
             // hscDepth
             // 
-            this.hscDepth.LargeChange = 9;
+            this.hscDepth.LargeChange = 1;
             this.hscDepth.Location = new System.Drawing.Point(154, 50);
             this.hscDepth.Maximum = 8;
             this.hscDepth.Name = "hscDepth";
             this.hscDepth.Size = new System.Drawing.Size(531, 26);
-            this.hscDepth.TabIndex = 6;
+            this.hscDepth.TabIndex = 1;
             this.hscDepth.ValueChanged += new System.EventHandler(this.hscDepth_ValueChanged);
             // 
             // tbDepth
@@ -84,7 +84,7 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // frmDepth
+            // Form6
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -94,7 +94,7 @@
             this.Controls.Add(this.hscDepth);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "frmDepth";
+            this.Name = "Form6";
             this.Text = "frmDepth";
             this.Load += new System.EventHandler(this.frmDepth_Load);
             this.ResumeLayout(false);

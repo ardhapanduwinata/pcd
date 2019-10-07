@@ -1,6 +1,6 @@
 ﻿namespace Praktikum2_TI4B_1641720114_Ardhanar
 {
-    partial class frmLogContrast
+    partial class Form4
     {
         /// <summary>
         /// Required designer variable.

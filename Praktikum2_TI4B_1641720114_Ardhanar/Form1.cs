@@ -69,7 +69,7 @@ namespace Praktikum2_TI4B_1641720114_Ardhanar
             }
             else
             {
-                frmBrightness frm2 = new frmBrightness();
+                Form2 frm2 = new Form2();
                 if(frm2.ShowDialog() == DialogResult.OK)
                 {
                     Bitmap b = new Bitmap((Bitmap)this.pbInput.Image);
@@ -154,7 +154,7 @@ namespace Praktikum2_TI4B_1641720114_Ardhanar
             }
             else
             {
-                frmInverse frm3 = new frmInverse();
+                Form3 frm3 = new Form3();
                 if (frm3.ShowDialog() == DialogResult.OK)
                 {
                     if (pbInput.Image == null)
@@ -194,7 +194,7 @@ namespace Praktikum2_TI4B_1641720114_Ardhanar
             }
             else
             {
-                frmLogContrast frm3 = new frmLogContrast();
+                Form4 frm3 = new Form4();
                 if (frm3.ShowDialog() == DialogResult.OK)
                 {
                     Bitmap b = new Bitmap((Bitmap)this.pbInput.Image);
@@ -276,7 +276,7 @@ namespace Praktikum2_TI4B_1641720114_Ardhanar
             }
             else
             {
-                frmGamma frm5 = new frmGamma();
+                Form5 frm5 = new Form5();
                 if (frm5.ShowDialog() == DialogResult.OK)
                 {
                     Bitmap b = new Bitmap((Bitmap)this.pbInput.Image);
@@ -321,7 +321,7 @@ namespace Praktikum2_TI4B_1641720114_Ardhanar
             }
             else
             {
-                frmDepth frm6 = new frmDepth();
+                Form6 frm6 = new Form6();
                 if (frm6.ShowDialog() == DialogResult.OK)
                 {
                     Bitmap b = new Bitmap((Bitmap)this.pbInput.Image);
@@ -348,6 +348,248 @@ namespace Praktikum2_TI4B_1641720114_Ardhanar
                     this.pbOutput.Image = b;
                 }
 
+            }
+        }
+
+        private void averageToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog folderDlg = new FolderBrowserDialog();
+            folderDlg.ShowNewFolderButton = true;
+
+            if (folderDlg.ShowDialog() == DialogResult.OK)
+            {
+                Environment.SpecialFolder root = folderDlg.RootFolder;
+            }
+
+            List<Image> pictureArray = new List<Image>();
+
+            foreach (string item in Directory.GetFiles(folderDlg.SelectedPath, "*.jpg", SearchOption.AllDirectories))
+            {
+                Image _image = Image.FromFile(item);
+                pictureArray.Add(_image);
+            }
+
+            pbInput.Image = pictureArray[0];
+            Bitmap b = new Bitmap((Bitmap)this.pbInput.Image);
+            Bitmap c = new Bitmap((Bitmap)this.pbInput.Image);
+
+            fileSize.Text = "Res. Citra: " + pbInput.Image.Width + " x " +
+            pbInput.Image.Height;
+            ProgressBar1.Visible = true;
+
+            double R, G, B;
+            int newR, newG, newB;
+            int lR, lG, lB;
+            //nilai 50 berikut menunjukkan jumlah citra, yang diproses adalah 50 citra 
+
+            int jumGambar = 100;
+
+            for (int i = 0; i < b.Width; i++)
+            {
+                for (int j = 0; j < b.Height; j++)
+                {
+                    R = 0;
+                    G = 0;
+                    B = 0;
+                    int avg = 0;
+                    for (int k = 0; k < jumGambar - 1; k++)
+                    {
+                        b = (Bitmap)pictureArray[k];
+                        Color c1 = b.GetPixel(i, j);
+
+                        R += Math.Sqrt(c1.R * c1.R);
+                        G += Math.Sqrt(c1.G * c1.G);
+                        B += Math.Sqrt(c1.B * c1.B);
+
+                    }
+
+                    c.SetPixel(i, j, Color.FromArgb(Convert.ToInt16(R / jumGambar), Convert.ToInt16(G / jumGambar), Convert.ToInt16(B / jumGambar)));
+                }
+                ProgressBar1.Value = Convert.ToInt16(100 * (i + 1) / c.Width);
+            }
+            ProgressBar1.Visible = false;
+            this.pbOutput.Image = c;
+        }
+
+        private int[] warnaTerdekat(int valueR, int valueG, int valueB)
+        {
+            double minDistance = (255 * 255) * 3;
+            int palColor, rDiff, gDiff, bDiff;
+            int[] pValueR1 = new int[3];
+            double distance;
+
+            //set warna pallete: hitam, merah, hijau, kuning, biru, cyan, magenta, putih 
+            int[,] palletteColor = new int[,] { { 0, 0, 0 }, { 255, 0, 0 }, { 0, 255, 0 }, { 255, 255, 0 }, { 0, 0, 255 }, { 0, 255, 255 }, { 255, 0, 255 }, { 255, 255, 255 } };
+
+            for (palColor = 0; palColor <= palletteColor.GetLength(0) - 1; palColor++)
+            {
+                //rDiff = valueR - palletteColor[1,0];
+                //gDiff = valueG - palletteColor[2,1];
+                //bDiff = valueB - palletteColor[3,2];
+
+                rDiff = valueR - palletteColor[palColor, 0];
+                gDiff = valueG - palletteColor[palColor, 1];
+                bDiff = valueB - palletteColor[palColor, 2];
+
+
+
+                distance = (rDiff * rDiff) + (gDiff * gDiff) + (bDiff * bDiff);
+
+                if (distance < minDistance)
+                {
+                    minDistance = distance;
+                    pValueR1[0] = palletteColor[palColor, 0];
+                    pValueR1[1] = palletteColor[palColor, 1];
+                    pValueR1[2] = palletteColor[palColor, 2];
+                }
+            }
+
+            return pValueR1;
+        }
+
+        private void nearestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pbInput.Image == null)
+                MessageBox.Show("Tidak ada citra yang akan diolah");
+            else
+            {
+                int[] baru;
+                int[,] palletteColor = new int[,] { { 0, 0, 0 }, { 255, 0, 0 }, { 0, 255, 0 }, { 255, 255, 0 }, { 0, 0, 255 }, { 0, 255, 255 }, { 255, 0, 255 }, { 255, 255, 255 } };
+                Bitmap b = new Bitmap((Bitmap)this.pbInput.Image);
+                this.pbOutput.Image = b;
+                ProgressBar1.Visible = true;
+                for (int i = 0; i < b.Width; i++)
+                {
+                    for (int j = 0; j < b.Height; j++)
+                    {
+                        Color c1 = b.GetPixel(i, j);
+                        baru = warnaTerdekat(c1.R, c1.G, c1.B);
+                        b.SetPixel(i, j, Color.FromArgb(baru[0], baru[1], baru[2]));
+                    }
+                    ProgressBar1.Value = Convert.ToInt16(100 * (i + 1) / b.Width);
+                }
+                ProgressBar1.Visible = false;
+                this.pbOutput.Image = b;
+            }
+        }
+
+        private void inputHistogram()
+        {
+
+            if (pbInput.Image == null)
+                MessageBox.Show("Tidak ada citra yang akan diolah");
+            else
+            {
+                Dictionary<int, double> HistoR = new Dictionary<int, double>();
+                Dictionary<int, double> HistoG = new Dictionary<int, double>();
+                Dictionary<int, double> HistoB = new Dictionary<int, double>();
+
+                Bitmap b = new Bitmap((Bitmap)this.pbInput.Image);
+                Form7 frm7 = new Form7();
+                Form8 frm8 = new Form8();
+
+                for (int h = 0; h <= 255; h++)
+                {
+                    HistoR.Add(h, 0);
+                    HistoG.Add(h, 0);
+                    HistoB.Add(h, 0);
+                }
+                for (int i = 0; i < b.Width; i++)
+                {
+                    for (int j = 0; j < b.Height; j++)
+                    {
+                        Color c1 = b.GetPixel(i, j); //jika pada baris i kolom j, pixel bernilai n, maka nilai n pada dictionary ditambah 1
+
+                        for (int k = 0; k <= 255; k++)
+                        {
+                            if (c1.G == k)
+                            {
+                                HistoG[k] = HistoG[k] + 1;
+                            }
+                            if (c1.R == k)
+                            {
+                                HistoR[k] = HistoR[k] + 1;
+                            }
+                            if (c1.B == k)
+                            {
+                                HistoB[k] = HistoB[k] + 1;
+                            }
+                        }
+                    }
+                    ProgressBar1.Value = Convert.ToInt16(100 * (i + 1) / b.Width);
+                }
+                ProgressBar1.Visible = false;
+                frm7.chart1.ChartAreas["ChartArea1"].AxisX.LabelStyle.Enabled = false;
+                frm7.chart1.ChartAreas["ChartArea1"].AxisY.LabelStyle.Enabled = false;
+
+                frm8.chart1.ChartAreas["ChartArea1"].AxisX.LabelStyle.Enabled = false;
+                frm8.chart1.ChartAreas["ChartArea1"].AxisY.LabelStyle.Enabled = false;
+                frm8.chart1.ChartAreas["ChartArea1"].AxisX.LabelStyle.Enabled = false;
+                frm8.chart1.ChartAreas["ChartArea1"].AxisY.LabelStyle.Enabled = false;
+                frm8.chart2.ChartAreas["ChartArea1"].AxisX.LabelStyle.Enabled = false;
+                frm8.chart2.ChartAreas["ChartArea1"].AxisY.LabelStyle.Enabled = false;
+
+                if (HistoR.Count == HistoG.Count && !HistoR.Except(HistoG).Any())
+                {
+                    frm7.chart1.Series["Series1"].Color = Color.Gray;
+                    frm7.chart1.Series[0].Points.DataBindXY(HistoR.Keys, HistoR.Values);
+                    frm7.ShowDialog();
+                }
+                else
+                {
+                    frm8.chart1.Series["Series1"].Color = Color.Red;
+                    frm8.chart1.Series["Series1"].Color = Color.Green;
+                    frm8.chart2.Series["Series1"].Color = Color.Blue;
+
+                    frm8.chart1.Series[0].Points.DataBindXY(HistoR.Keys, HistoR.Values);
+                    frm8.chart1.Series[0].Points.DataBindXY(HistoG.Keys, HistoG.Values);
+                    frm8.chart2.Series[0].Points.DataBindXY(HistoB.Keys, HistoB.Values);
+                    frm8.ShowDialog();
+                }
+            }
+        }
+
+        private void rGBToGrayscaleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pbInput.Image == null)
+            {
+                MessageBox.Show("Tidak Ada citra yang akan diolah");
+            }
+            else
+            {
+                Form5 frm5 = new Form5();
+                if (frm5.ShowDialog() == DialogResult.OK)
+                {
+                    Bitmap b = new Bitmap((Bitmap)this.pbInput.Image);
+                    double nilaiGamma = Convert.ToDouble(frm5.tbGamma.Text) * (double)0.01;
+                    double gammaCorrection = 1 / nilaiGamma;
+                    double r1, g1, b1;
+                    bool gray = false;
+                    double merah, hijau, biru;
+                    for (int i = 0; i < 10; i++)
+                    {
+                        for (int j = 0; j < 10; j++)
+                        {
+                            merah = b.GetPixel(i, j).R;
+                            hijau = b.GetPixel(i, j).G;
+                            biru = b.GetPixel(i, j).B;
+                            if (merah.Equals(hijau).Equals(biru))
+                            {
+                                gray = true;
+                            }
+                            else
+                            {
+                                r1 = 255 * Math.Pow(merah / 255, gammaCorrection);
+                                g1 = 255 * Math.Pow(hijau / 255, gammaCorrection);
+                                b1 = 255 * Math.Pow(biru / 255, gammaCorrection);
+                                b.SetPixel(i, j, Color.FromArgb(Convert.ToInt16(r1), Convert.ToInt16(g1), Convert.ToInt16(b1)));
+                            }
+                        }
+                        ProgressBar1.Value = Convert.ToInt16(100 * (i + 1) / b.Width);
+                    }
+                    ProgressBar1.Visible = false;
+                    this.pbOutput.Image = b;
+                }
             }
         }
     }

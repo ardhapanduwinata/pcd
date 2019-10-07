@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Praktikum2_TI4B_1641720114_Ardhanar
 {
-    public partial class frmGamma : Form
+    public partial class Form5 : Form
     {
-        public frmGamma()
+        public Form5()
         {
             InitializeComponent();
         }

@@ -1,6 +1,6 @@
 ﻿namespace Praktikum2_TI4B_1641720114_Ardhanar
 {
-    partial class frmInverse
+    partial class Form3
     {
         /// <summary>
         /// Required designer variable.
