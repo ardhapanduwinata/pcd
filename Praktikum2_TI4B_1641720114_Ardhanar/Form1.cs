@@ -549,6 +549,82 @@ namespace Praktikum2_TI4B_1641720114_Ardhanar
             }
         }
 
+        private void outputHistogram()
+        {
+
+            if (pbOutput.Image == null)
+                MessageBox.Show("Tidak ada citra yang akan diolah");
+            else
+            {
+                Dictionary<int, double> HistoR = new Dictionary<int, double>();
+                Dictionary<int, double> HistoG = new Dictionary<int, double>();
+                Dictionary<int, double> HistoB = new Dictionary<int, double>();
+
+                Bitmap b = new Bitmap((Bitmap)this.pbOutput.Image);
+                Form7 frm7 = new Form7();
+                Form8 frm8 = new Form8();
+
+                for (int h = 0; h <= 255; h++)
+                {
+                    HistoR.Add(h, 0);
+                    HistoG.Add(h, 0);
+                    HistoB.Add(h, 0);
+                }
+                for (int i = 0; i < b.Width; i++)
+                {
+                    for (int j = 0; j < b.Height; j++)
+                    {
+                        Color c1 = b.GetPixel(i, j); //jika pada baris i kolom j, pixel bernilai n, maka nilai n pada dictionary ditambah 1
+
+                        for (int k = 0; k <= 255; k++)
+                        {
+                            if (c1.G == k)
+                            {
+                                HistoG[k] = HistoG[k] + 1;
+                            }
+                            if (c1.R == k)
+                            {
+                                HistoR[k] = HistoR[k] + 1;
+                            }
+                            if (c1.B == k)
+                            {
+                                HistoB[k] = HistoB[k] + 1;
+                            }
+                        }
+                    }
+                    ProgressBar1.Value = Convert.ToInt16(100 * (i + 1) / b.Width);
+                }
+                ProgressBar1.Visible = false;
+                frm7.chart1.ChartAreas["ChartArea1"].AxisX.LabelStyle.Enabled = false;
+                frm7.chart1.ChartAreas["ChartArea1"].AxisY.LabelStyle.Enabled = false;
+
+                frm8.chart1.ChartAreas["ChartArea1"].AxisX.LabelStyle.Enabled = false;
+                frm8.chart1.ChartAreas["ChartArea1"].AxisY.LabelStyle.Enabled = false;
+                frm8.chart1.ChartAreas["ChartArea1"].AxisX.LabelStyle.Enabled = false;
+                frm8.chart1.ChartAreas["ChartArea1"].AxisY.LabelStyle.Enabled = false;
+                frm8.chart2.ChartAreas["ChartArea1"].AxisX.LabelStyle.Enabled = false;
+                frm8.chart2.ChartAreas["ChartArea1"].AxisY.LabelStyle.Enabled = false;
+
+                if (HistoR.Count == HistoG.Count && !HistoR.Except(HistoG).Any())
+                {
+                    frm7.chart1.Series["Series1"].Color = Color.Gray;
+                    frm7.chart1.Series[0].Points.DataBindXY(HistoR.Keys, HistoR.Values);
+                    frm7.ShowDialog();
+                }
+                else
+                {
+                    frm8.chart1.Series["Series1"].Color = Color.Red;
+                    frm8.chart1.Series["Series1"].Color = Color.Green;
+                    frm8.chart2.Series["Series1"].Color = Color.Blue;
+
+                    frm8.chart1.Series[0].Points.DataBindXY(HistoR.Keys, HistoR.Values);
+                    frm8.chart1.Series[0].Points.DataBindXY(HistoG.Keys, HistoG.Values);
+                    frm8.chart2.Series[0].Points.DataBindXY(HistoB.Keys, HistoB.Values);
+                    frm8.ShowDialog();
+                }
+            }
+        }
+
         private void rGBToGrayscaleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (pbInput.Image == null)
